@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Real_Digital_Touch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RSB-Xx-AZb">
+                                <rect key="frame" x="76" y="279.5" width="223" height="108"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VDI-on-Q3b">
+                                        <rect key="frame" x="0.0" y="0.0" width="223" height="54"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Live Digital Touch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yl6-Wo-PYQ">
+                                                <rect key="frame" x="25.5" y="0.0" width="172" height="26.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite someone to get started." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tid-g5-oaa">
+                                                <rect key="frame" x="0.0" y="34.5" width="223" height="19.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4v-MP-Oxd" customClass="NanoButton" customModule="Real_Digital_Touch" customModuleProvider="target">
+                                        <rect key="frame" x="69" y="74" width="85" height="34"/>
+                                        <state key="normal" title="Invite Peer"/>
+                                        <connections>
+                                            <action selector="leadButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vUg-4O-V9N"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RSB-Xx-AZb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" priority="999" id="FCc-cq-DfR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RSB-Xx-AZb" secondAttribute="trailing" constant="40" id="GmN-Sr-cvs"/>
+                            <constraint firstItem="RSB-Xx-AZb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="UiJ-tA-dLh"/>
+                            <constraint firstItem="RSB-Xx-AZb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="foi-ek-mKB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="leadButton" destination="a4v-MP-Oxd" id="fPD-3y-N9d"/>
+                        <segue destination="RLX-MH-UsY" kind="presentation" identifier="ShowSession" id="5sY-3H-CMj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--Session View Controller-->
+        <scene sceneID="PnQ-kx-Gkl">
+            <objects>
+                <viewController id="RLX-MH-UsY" customClass="SessionViewController" customModule="Real_Digital_Touch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5GT-TU-njo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="jEm-VE-PPd">
+                                <rect key="frame" x="177.5" y="323" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yiP-Og-ZkP">
+                                <rect key="frame" x="326" y="28" width="25" height="25"/>
+                                <accessibility key="accessibilityConfiguration" label="End Session"/>
+                                <color key="tintColor" white="0.5704520089285714" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="Close"/>
+                                <connections>
+                                    <action selector="dismissButtonTapped:" destination="RLX-MH-UsY" eventType="touchUpInside" id="IhL-1N-gSE"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.10000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yiP-Og-ZkP" firstAttribute="top" secondItem="5GT-TU-njo" secondAttribute="topMargin" constant="8" id="4bj-Tk-yK7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yiP-Og-ZkP" secondAttribute="trailing" constant="8" id="GiB-Wa-KtU"/>
+                            <constraint firstItem="jEm-VE-PPd" firstAttribute="centerY" secondItem="5GT-TU-njo" secondAttribute="centerY" id="TeJ-4e-mGu"/>
+                            <constraint firstItem="jEm-VE-PPd" firstAttribute="centerX" secondItem="5GT-TU-njo" secondAttribute="centerX" id="jRw-4A-yMR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NpY-r3-qUi"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="jEm-VE-PPd" id="XzZ-dq-Gy6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cjd-QT-eOJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1308" y="59.820089955022496"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Close" width="25" height="25"/>
+    </resources>
+</document>
