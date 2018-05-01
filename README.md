@@ -2,6 +2,8 @@
 
 Bringing back the pre-watchOS 3 Digital Touch.
 
+![Screenshot](/Assets/Screenshot.png)
+
 Prior to watchOS 3/iOS 10, Digital Touch was live. You drew something and your partner immediately saw it. In iOS 10, it was now iMessage-based, making the experience less personal.
 
 This app attempts to mimic the pre-watchOS 3 experience on iOS.
