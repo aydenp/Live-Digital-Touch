@@ -1,6 +1,6 @@
 # Live Digital Touch
 
-Bringing back the pre-watchOS 3 Digital Touch.
+Bringing back the pre-watchOS 3 Digital Touch experience.
 
 ![Screenshot](/Assets/Screenshot.png)
 
