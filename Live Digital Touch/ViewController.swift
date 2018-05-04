@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.\
-        canInvite = false
+        updateInviteButton()
         GameCenterHelper.shared.add(observer: self)
     }
     
@@ -25,22 +25,28 @@ class ViewController: UIViewController {
         GameCenterHelper.shared.authenticateUser()
     }
     
-    var canInvite = false {
-        didSet {
-            UIView.animate(withDuration: 0.1, animations: {
-                self.leadButton.alpha = 0
-            }) { (completed) in
-                guard completed else { return }
-                self.leadButton.setTitle(self.canInvite ? "Invite Peer" : "Sign in to Game Center", for: .normal)
-                UIView.animate(withDuration: 0.1, animations: {
-                    self.leadButton.alpha = 1
-                })
+    func updateInviteButton() {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.leadButton.alpha = 0
+        }) { (completed) in
+            guard completed else { return }
+            switch GameCenterHelper.shared.authenticationState {
+            case .authenticated:
+                self.leadButton.setTitle("Invite Peer", for: .normal)
+            case .failed(_), .notAuthenticated:
+                self.leadButton.setTitle("Sign in to Game Center", for: .normal)
+            case .loading:
+                self.leadButton.setTitle("Signing in…", for: .normal)
             }
+            self.leadButton.isEnabled = !GameCenterHelper.shared.authenticationState.isBusy
+            UIView.animate(withDuration: 0.1, animations: {
+                self.leadButton.alpha = 1
+            })
         }
     }
 
     @IBAction func leadButtonTapped(_ sender: Any) {
-        if canInvite {
+        if GameCenterHelper.shared.authenticationState.isAuthenticated {
             guard let matchmakingVC = matchmakingHelper.getMatchmakingViewController() else { return }
             matchmakingVC.matchmakerDelegate = self
             present(matchmakingVC, animated: true, completion: nil)
@@ -62,7 +68,7 @@ extension ViewController: GameCenterObserver {
     }
     
     func gameCenterAuthenticationState(changedTo authenticationState: GameCenterHelper.AuthenticationState) {
-        canInvite = authenticationState.isAuthenticated
+        updateInviteButton()
     }
 }
 

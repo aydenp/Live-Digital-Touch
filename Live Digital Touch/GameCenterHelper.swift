@@ -14,7 +14,7 @@ class GameCenterHelper {
     private var _observers = NSHashTable<AnyObject>.weakObjects()
     
     enum AuthenticationState {
-        case authenticated, notAuthenticated, failed(Error?)
+        case authenticated, notAuthenticated, failed(Error?), loading
         
         var isAuthenticated: Bool {
             switch self {
@@ -22,9 +22,18 @@ class GameCenterHelper {
             default: return false
             }
         }
+        
+        var isBusy: Bool {
+            switch self {
+                case .loading: return true
+                default: return false
+            }
+        }
     }
     
     func authenticateUser() {
+        guard !authenticationState.isBusy else { return }
+        authenticationState = .loading
         GKLocalPlayer.localPlayer().authenticateHandler = { (viewController, error) in
             if let viewController = viewController {
                 self.authenticationState = .notAuthenticated

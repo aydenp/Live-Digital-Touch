@@ -38,4 +38,10 @@ class NanoButton: UIButton {
         }
     }
     
+    override var isEnabled: Bool {
+        didSet {
+            backgroundColor = NanoButton.backgroundColour.withAlphaComponent(isEnabled ? 1 : 0.35)
+        }
+    }
+    
 }
