@@ -29,6 +29,11 @@ class DTSCanvasViewControllerHelper {
         set { self["_sendDelegate"] = newValue }
     }
     
+    var replayButton: UIButton? {
+        get { return self["_replayButton"] as? UIButton }
+        set { self["_replayButton"] = newValue }
+    }
+    
     func didReceive(message: NSObject, from dataSource: NSObject) {
         viewController.perform(Selector(("dataSource:didReceiveSessionMessage:")), with: dataSource, with: message)
     }

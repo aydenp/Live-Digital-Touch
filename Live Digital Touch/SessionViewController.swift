@@ -31,8 +31,15 @@ class SessionViewController: UIViewController {
     private func setupCanvasViewController() {
         canvasHelper = DTSCanvasViewControllerHelper()
         canvasHelper.sendDelegate = self
+        
+        // Remove replay button
+        canvasHelper.replayButton?.removeFromSuperview()
+        canvasHelper.replayButton = nil
+        
+        // Hide canvas unless connected
         canvasHelper.view.isHidden = !session.isConnected
         
+        // Add canvas to view
         addChildViewController(canvasHelper.viewController)
         canvasHelper.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         canvasHelper.view.frame = view.bounds

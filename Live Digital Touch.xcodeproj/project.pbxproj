@@ -73,7 +73,6 @@
 				C3348E3A2097B7420044225D /* AppDelegate.swift */,
 				C3348E3C2097B7420044225D /* ViewController.swift */,
 				C3348E5E2097E2790044225D /* SessionViewController.swift */,
-				C31F208E209BFEA100C826A5 /* DTSCanvasViewControllerHelper.swift */,
 				C3348E3E2097B7420044225D /* Main.storyboard */,
 				C3348E412097B7420044225D /* Assets.xcassets */,
 				C3348E432097B7420044225D /* LaunchScreen.storyboard */,
@@ -82,6 +81,7 @@
 				C3348E552097C4850044225D /* GameCenterHelper.swift */,
 				C3348E592097DDBB0044225D /* Session.swift */,
 				C3348E572097CBBE0044225D /* NanoButton.swift */,
+				C31F208E209BFEA100C826A5 /* DTSCanvasViewControllerHelper.swift */,
 			);
 			path = "Live Digital Touch";
 			sourceTree = "<group>";
