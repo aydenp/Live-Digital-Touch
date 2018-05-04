@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C31F208F209BFEA100C826A5 /* DTSCanvasViewControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31F208E209BFEA100C826A5 /* DTSCanvasViewControllerHelper.swift */; };
 		C3348E3B2097B7420044225D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3348E3A2097B7420044225D /* AppDelegate.swift */; };
 		C3348E3D2097B7420044225D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3348E3C2097B7420044225D /* ViewController.swift */; };
 		C3348E402097B7420044225D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3348E3E2097B7420044225D /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C31F208E209BFEA100C826A5 /* DTSCanvasViewControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSCanvasViewControllerHelper.swift; sourceTree = "<group>"; };
 		C3348E372097B7420044225D /* Live Digital Touch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Live Digital Touch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3348E3A2097B7420044225D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3348E3C2097B7420044225D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				C3348E3A2097B7420044225D /* AppDelegate.swift */,
 				C3348E3C2097B7420044225D /* ViewController.swift */,
 				C3348E5E2097E2790044225D /* SessionViewController.swift */,
+				C31F208E209BFEA100C826A5 /* DTSCanvasViewControllerHelper.swift */,
 				C3348E3E2097B7420044225D /* Main.storyboard */,
 				C3348E412097B7420044225D /* Assets.xcassets */,
 				C3348E432097B7420044225D /* LaunchScreen.storyboard */,
@@ -132,7 +135,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C3348E322097B7420044225D /* Build configuration list for PBXProject "Real Digital Touch" */;
+			buildConfigurationList = C3348E322097B7420044225D /* Build configuration list for PBXProject "Live Digital Touch" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -172,6 +175,7 @@
 				C3348E542097C47E0044225D /* MatchmakingManager.swift in Sources */,
 				C3348E5A2097DDBB0044225D /* Session.swift in Sources */,
 				C3348E3D2097B7420044225D /* ViewController.swift in Sources */,
+				C31F208F209BFEA100C826A5 /* DTSCanvasViewControllerHelper.swift in Sources */,
 				C3348E582097CBBE0044225D /* NanoButton.swift in Sources */,
 				C3348E5F2097E2790044225D /* SessionViewController.swift in Sources */,
 				C3348E3B2097B7420044225D /* AppDelegate.swift in Sources */,
@@ -356,7 +360,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C3348E322097B7420044225D /* Build configuration list for PBXProject "Real Digital Touch" */ = {
+		C3348E322097B7420044225D /* Build configuration list for PBXProject "Live Digital Touch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C3348E472097B7420044225D /* Debug */,

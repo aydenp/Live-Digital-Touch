@@ -10,7 +10,7 @@ import UIKit
 
 class SessionViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    var canvasViewController: UIViewController!
+    var canvasHelper: DTSCanvasViewControllerHelper!
     var session: Session!
     
     override func viewDidLoad() {
@@ -29,16 +29,15 @@ class SessionViewController: UIViewController {
     }
     
     private func setupCanvasViewController() {
-        let canvasClass = NSClassFromString("DTSCanvasViewController") as! UIViewController.Type
-        canvasViewController = canvasClass.init()
-        canvasViewController.setValue(self, forKey: "_sendDelegate")
-        canvasViewController.view.isHidden = !session.isConnected
+        canvasHelper = DTSCanvasViewControllerHelper()
+        canvasHelper.sendDelegate = self
+        canvasHelper.view.isHidden = !session.isConnected
         
-        addChildViewController(canvasViewController)
-        canvasViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        canvasViewController.view.frame = view.bounds
-        view.insertSubview(canvasViewController.view, at: 0)
-        canvasViewController.didMove(toParentViewController: canvasViewController)
+        addChildViewController(canvasHelper.viewController)
+        canvasHelper.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        canvasHelper.view.frame = view.bounds
+        view.insertSubview(canvasHelper.view, at: 0)
+        canvasHelper.viewController.didMove(toParentViewController: self)
     }
 
     private func dismiss(with error: Error?) {
@@ -62,7 +61,7 @@ extension SessionViewController: SessionDelegate {
     func sessionConnected(changedTo connected: Bool) {
         if connected {
             activityIndicator.stopAnimating()
-            canvasViewController.view.isHidden = false
+            canvasHelper.view.isHidden = false
         } else {
             dismiss(with: nil)
         }
@@ -75,13 +74,12 @@ extension SessionViewController: SessionDelegate {
     func sessionRetrieved(data: Data) {
         guard let object = (NSClassFromString("ETMessage") as? NSObjectProtocol)?.perform("unarchive:", with: data).takeUnretainedValue() as? NSObject else { return }
         object.setValue(UUID().uuidString, forKey: "_identifier")
-        canvasViewController.perform("dataSource:didReceiveSessionMessage:", with: self, with: object)
+        canvasHelper.didReceive(message: object, from: self)
     }
 }
 
-extension SessionViewController {
+extension SessionViewController: DTSCanvasViewControllerHelperSendDelegate {
     @objc func canvasViewController(_ canvasViewController: NSObject, sendMessage message: NSObject) {
-        print(message)
         guard let data = message.perform("archive")?.takeUnretainedValue() as? Data else { return }
         session.send(data: data)
     }
