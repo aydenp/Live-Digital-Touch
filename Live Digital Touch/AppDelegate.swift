@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Load private Digital Touch framework
         dlopen("/System/Library/PrivateFrameworks/DigitalTouchShared.framework/DigitalTouchShared", RTLD_NOW)
         
+        // Register for Game Center events
+        GameCenterHelper.shared.registerListener()
+        
         return true
     }
 

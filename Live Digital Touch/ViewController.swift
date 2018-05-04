@@ -47,13 +47,19 @@ class ViewController: UIViewController {
 
     @IBAction func leadButtonTapped(_ sender: Any) {
         if GameCenterHelper.shared.authenticationState.isAuthenticated {
-            guard let matchmakingVC = matchmakingHelper.getMatchmakingViewController() else { return }
-            matchmakingVC.matchmakerDelegate = self
-            present(matchmakingVC, animated: true, completion: nil)
+            presentMatchmakingViewController()
         } else {
             GameCenterHelper.shared.authenticateUser()
         }
     }
+    
+    private func presentMatchmakingViewController(for invite: GKInvite? = nil) {
+        guard let matchmakingVC = matchmakingHelper.getMatchmakingViewController(for: invite) else { return }
+        matchmakingVC.matchmakerDelegate = self
+        present(matchmakingVC, animated: true, completion: nil)
+    }
+    
+    // MARK: - Segues
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "ShowSession", let session = sender as? Session, let sessionVC = segue.destination as? SessionViewController else { return }
@@ -62,6 +68,7 @@ class ViewController: UIViewController {
     
 }
 
+// MARK: - Game Center Observer
 extension ViewController: GameCenterObserver {
     func authenticateGameCenter(with viewController: UIViewController) {
         present(viewController, animated: true, completion: nil)
@@ -70,8 +77,14 @@ extension ViewController: GameCenterObserver {
     func gameCenterAuthenticationState(changedTo authenticationState: GameCenterHelper.AuthenticationState) {
         updateInviteButton()
     }
+    
+    func gameCenterAccepted(invite: GKInvite) {
+        presentedViewController?.dismiss(animated: false, completion: nil)
+        presentMatchmakingViewController(for: invite)
+    }
 }
 
+// MARK: - Matchmaker View Controller Delegate
 extension ViewController: GKMatchmakerViewControllerDelegate {
     func matchmakerViewController(_ viewController: GKMatchmakerViewController, didFailWithError error: Error) {
         viewController.dismiss(animated: true, completion: nil)

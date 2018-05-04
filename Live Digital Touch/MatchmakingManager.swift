@@ -17,7 +17,10 @@ class MatchmakingManager {
         return request
     }
     
-    func getMatchmakingViewController() -> GKMatchmakerViewController? {
+    func getMatchmakingViewController(for invite: GKInvite? = nil) -> GKMatchmakerViewController? {
+        if let invite = invite {
+            return GKMatchmakerViewController(invite: invite)
+        }
         return GKMatchmakerViewController(matchRequest: request)
     }
     

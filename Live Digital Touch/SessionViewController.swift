@@ -24,6 +24,11 @@ class SessionViewController: UIViewController {
         setupCanvasViewController()
     }
     
+    deinit {
+        // Disconnect gracefully before removing from memory
+        session.disconnect()
+    }
+    
     override func preferredScreenEdgesDeferringSystemGestures() -> UIRectEdge {
         return .all
     }

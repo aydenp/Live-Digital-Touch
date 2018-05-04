@@ -9,9 +9,15 @@
 import Foundation
 import GameKit
 
-class GameCenterHelper {
+class GameCenterHelper: NSObject {
     static let shared = GameCenterHelper()
     private var _observers = NSHashTable<AnyObject>.weakObjects()
+    
+    func registerListener() {
+        GKLocalPlayer.localPlayer().register(self)
+    }
+    
+    // MARK: - Authentication
     
     enum AuthenticationState {
         case authenticated, notAuthenticated, failed(Error?), loading
@@ -68,7 +74,14 @@ class GameCenterHelper {
     }
 }
 
+extension GameCenterHelper: GKLocalPlayerListener {
+    func player(_ player: GKPlayer, didAccept invite: GKInvite) {
+        notifyObservers { $0.gameCenterAccepted(invite: invite) }
+    }
+}
+
 protocol GameCenterObserver: class {
     func gameCenterAuthenticationState(changedTo authenticationState: GameCenterHelper.AuthenticationState)
     func authenticateGameCenter(with viewController: UIViewController)
+    func gameCenterAccepted(invite: GKInvite)
 }
