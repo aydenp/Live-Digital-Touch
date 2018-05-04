@@ -34,6 +34,11 @@ class DTSCanvasViewControllerHelper {
         set { self["_replayButton"] = newValue }
     }
     
+    var colorPicker: UIView? {
+        get { return viewController.perform(Selector(("colorPicker")))?.takeUnretainedValue() as? UIView }
+        set { viewController.perform(Selector(("setColorPicker:")), with: newValue) }
+    }
+    
     func didReceive(message: NSObject, from dataSource: NSObject) {
         viewController.perform(Selector(("dataSource:didReceiveSessionMessage:")), with: dataSource, with: message)
     }

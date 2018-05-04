@@ -37,6 +37,10 @@ class SessionViewController: UIViewController {
         canvasHelper = DTSCanvasViewControllerHelper()
         canvasHelper.sendDelegate = self
         
+        // Add colour picker
+        let colourPicker = (NSClassFromString("ETHorizontalColorPicker") as! UIView.Type).init()
+        canvasHelper.colorPicker = colourPicker
+        
         // Remove replay button
         canvasHelper.replayButton?.removeFromSuperview()
         canvasHelper.replayButton = nil
@@ -50,6 +54,22 @@ class SessionViewController: UIViewController {
         canvasHelper.view.frame = view.bounds
         view.insertSubview(canvasHelper.view, at: 0)
         canvasHelper.viewController.didMove(toParentViewController: self)
+        
+        // Adjust colour picker layout
+        colourPicker.removeFromSuperview()
+        view.addSubview(colourPicker)
+        colourPicker.translatesAutoresizingMaskIntoConstraints = false
+        let widthConstraint = colourPicker.widthAnchor.constraint(equalToConstant: 330)
+        widthConstraint.priority = .defaultLow
+        widthConstraint.isActive = true
+        colourPicker.heightAnchor.constraint(equalToConstant: 26).isActive = true
+        let safeBottomConstraint = colourPicker.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        safeBottomConstraint.priority = .defaultLow
+        safeBottomConstraint.isActive = true
+        colourPicker.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
+        colourPicker.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
+        colourPicker.leftAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.leftAnchor, constant: 20).isActive = true
+        colourPicker.rightAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.rightAnchor, constant: -20).isActive = true
     }
 
     private func dismiss(with error: Error?) {

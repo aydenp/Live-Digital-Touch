@@ -15,7 +15,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.\
+        // Do any additional setup after loading the view, typically from a nib.
         updateInviteButton()
         GameCenterHelper.shared.add(observer: self)
     }

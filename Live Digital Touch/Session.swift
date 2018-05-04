@@ -41,7 +41,6 @@ class Session: NSObject {
     }
 }
 
-
 extension Session: GKMatchDelegate {
     func match(_ match: GKMatch, player: GKPlayer, didChange state: GKPlayerConnectionState) {
         evaluateConnectionState()

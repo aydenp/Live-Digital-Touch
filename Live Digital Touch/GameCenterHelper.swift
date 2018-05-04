@@ -74,6 +74,7 @@ class GameCenterHelper: NSObject {
     }
 }
 
+// MARK: - Local Player Listener
 extension GameCenterHelper: GKLocalPlayerListener {
     func player(_ player: GKPlayer, didAccept invite: GKInvite) {
         notifyObservers { $0.gameCenterAccepted(invite: invite) }
