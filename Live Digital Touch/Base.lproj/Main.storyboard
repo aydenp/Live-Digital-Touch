@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Real_Digital_Touch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Live_Digital_Touch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,7 +38,7 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4v-MP-Oxd" customClass="NanoButton" customModule="Real_Digital_Touch" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4v-MP-Oxd" customClass="NanoButton" customModule="Live_Digital_Touch" customModuleProvider="target">
                                         <rect key="frame" x="69" y="74" width="85" height="34"/>
                                         <state key="normal" title="Invite Peer"/>
                                         <connections>
@@ -68,7 +68,7 @@
         <!--Session View Controller-->
         <scene sceneID="PnQ-kx-Gkl">
             <objects>
-                <viewController id="RLX-MH-UsY" customClass="SessionViewController" customModule="Real_Digital_Touch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="RLX-MH-UsY" customClass="SessionViewController" customModule="Live_Digital_Touch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5GT-TU-njo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -79,7 +79,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yiP-Og-ZkP">
                                 <rect key="frame" x="326" y="28" width="25" height="25"/>
                                 <accessibility key="accessibilityConfiguration" label="End Session"/>
-                                <color key="tintColor" white="0.5704520089285714" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="0.56999999999999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Close"/>
                                 <connections>
                                     <action selector="dismissButtonTapped:" destination="RLX-MH-UsY" eventType="touchUpInside" id="IhL-1N-gSE"/>

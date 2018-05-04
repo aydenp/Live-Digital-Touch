@@ -15,6 +15,7 @@ class GameCenterHelper: NSObject {
     
     func registerListener() {
         GKLocalPlayer.localPlayer().register(self)
+        NotificationCenter.default.addObserver(self, selector: #selector(authenticationChanged), name: .GKPlayerAuthenticationDidChangeNotificationName, object: nil)
     }
     
     // MARK: - Authentication
@@ -38,7 +39,7 @@ class GameCenterHelper: NSObject {
     }
     
     func authenticateUser() {
-        guard !authenticationState.isBusy else { return }
+        guard !authenticationState.isBusy, !GKLocalPlayer.localPlayer().isAuthenticated else { return }
         authenticationState = .loading
         GKLocalPlayer.localPlayer().authenticateHandler = { (viewController, error) in
             if let viewController = viewController {
@@ -50,6 +51,10 @@ class GameCenterHelper: NSObject {
                 self.authenticationState = .authenticated
             }
         }
+    }
+    
+    @objc func authenticationChanged() {
+        authenticationState = GKLocalPlayer.localPlayer().isAuthenticated ? .authenticated : .notAuthenticated
     }
     
     var authenticationState = AuthenticationState.notAuthenticated {

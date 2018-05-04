@@ -63,7 +63,7 @@ class SessionViewController: UIViewController {
         widthConstraint.priority = .defaultLow
         widthConstraint.isActive = true
         colourPicker.heightAnchor.constraint(equalToConstant: 26).isActive = true
-        let safeBottomConstraint = colourPicker.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        let safeBottomConstraint = colourPicker.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8)
         safeBottomConstraint.priority = .defaultLow
         safeBottomConstraint.isActive = true
         colourPicker.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
